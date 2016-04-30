@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using ClosedXML.Excel;
+using static System.Console;
 
 namespace GenMultivariateAnalysis
 {
@@ -11,7 +12,8 @@ namespace GenMultivariateAnalysis
         static void Main(string[] args)
         {
             if (args.Length != 0) CreateTemplate(args[0], $"{Path.GetFileNameWithoutExtension(args[0])}.xlsx");
-            else { Console.WriteLine("csvファイルパスを入力");  CreateTemplate(Console.ReadLine(), "result.xlsx"); }
+            else { WriteLine("csvファイルパスを入力");  var csv = ReadLine(); CreateTemplate(csv, $"{Path.GetFileNameWithoutExtension(csv)}.xlsx"); }
+            WriteLine("Success! Generated a Excel Template!");
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace GenMultivariateAnalysis
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(ex);
+                Error.WriteLine(ex);
                 return null;
             }
         }
@@ -244,7 +246,8 @@ namespace GenMultivariateAnalysis
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(ex);
+                Error.WriteLine(ex);
+                Environment.Exit(1);
             }
         }
     }
