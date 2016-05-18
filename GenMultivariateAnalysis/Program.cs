@@ -83,7 +83,7 @@ namespace GenMultivariateAnalysis
                     // Write Source Data
                     for (var i = 0; i < population; i++)
                     {
-                        workSheet.Cell(i + OffsetY, 1).Value = $"{(char)('A' + i)}";
+                        workSheet.Cell(i + OffsetY, 1).Value = $"{Get26Decimal(i)}";
                         for (var j = 0; j < variablesNum; j++)
                             workSheet.Cell(i + OffsetY, j + OffsetX).Value = data[i][j];
                     }
@@ -112,7 +112,7 @@ namespace GenMultivariateAnalysis
                     // Write Normalize Data
                     for (var i = 0; i < population; i++)
                     {
-                        workSheet.Cell(i + OffsetY, 1).Value = $"{(char)('A' + i)}";
+                        workSheet.Cell(i + OffsetY, 1).Value = $"{Get26Decimal(i)}";
                         for (var j = 0; j < variablesNum; j++)
                             workSheet.Cell(i + OffsetY, j + OffsetX).FormulaA1 = $"=({(char)('B' + j)}{OffsetY - population - 4 + i}-{(char)('B' + j)}${OffsetY - 4})/SQRT({(char)('B' + j)}${OffsetY - 3})";
                     }
@@ -192,7 +192,7 @@ namespace GenMultivariateAnalysis
 
                     for (var i = 0; i < population; i++)
                     {
-                        workSheet.Cell(i + OffsetY, 1).Value = $"{(char)('A' + i)}";
+                        workSheet.Cell(i + OffsetY, 1).Value = $"{Get26Decimal(i)}";
                         var y = "=";
                         for (var j = 0; j < variablesNum - 1; j++)
                             y += (j == 0 ? "" : "+") + $"{(char)('B' + j + 1)}{NormY + i}*{(char)('B' + MatX)}{MatY + j}";
@@ -249,6 +249,19 @@ namespace GenMultivariateAnalysis
                 Error.WriteLine(ex);
                 Environment.Exit(1);
             }
+        }
+
+        static string Get26Decimal(int n)
+        {
+            var ans = "";
+            var tmp = n;
+            do
+            {
+                ans += (char)('A' + tmp % 26 + ((tmp < 26 && n >= 26) ? -1 : 0));
+                tmp /= 26;
+            }
+            while (tmp > 0);
+            return string.Join("", ans.Trim(' ').Reverse());
         }
     }
 }
