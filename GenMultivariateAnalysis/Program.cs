@@ -183,12 +183,12 @@ namespace GenMultivariateAnalysis
                     int OffsetY = population * 2 + variablesNum * 2 + 14;
                     int MatX = OffsetX + variablesNum - 1;
                     int MatY = OffsetY - variablesNum - 1;
-                    int NormX = 2;
                     int NormY = population + 7;
 
                     // Set Labels
                     workSheet.Cell($"B{OffsetY - 1}").Value = "Y";
                     workSheet.Cell($"C{OffsetY - 1}").Value = "E";
+                    workSheet.Cell($"D{OffsetY - 1}").Value = "Y - Ave(Y)";
 
                     for (var i = 0; i < population; i++)
                     {
@@ -198,6 +198,7 @@ namespace GenMultivariateAnalysis
                             y += (j == 0 ? "" : "+") + $"{(char)('B' + j + 1)}{NormY + i}*{(char)('B' + MatX)}{MatY + j}";
                         workSheet.Cell(i + OffsetY, 2).FormulaA1 = y;
                         workSheet.Cell(i + OffsetY, 3).FormulaA1 = $"B{NormY + i}-B{OffsetY + i}";
+                        workSheet.Cell(i + OffsetY, 4).FormulaA1 = $"B{OffsetY + i}-B{OffsetY + population}";
                     }
 
                     // Calc Average
@@ -215,9 +216,7 @@ namespace GenMultivariateAnalysis
                 {
                     int OffsetX = 1;
                     int OffsetY = population * 3 + variablesNum * 2 + 18;
-                    int NormX = 2;
                     int NormY = population + 7;
-                    int PredX = 2;
                     int PredY = population * 2 + variablesNum * 2 + 14;
 
                     // Set Labels
@@ -225,11 +224,8 @@ namespace GenMultivariateAnalysis
                     workSheet.Cell($"B{OffsetY - 1}").Value = "自由度";
                     workSheet.Cell($"C{OffsetY - 1}").Value = "不偏分散";
                     workSheet.Cell($"D{OffsetY - 1}").Value = "分散比";
-
-                    var arg = "";
-                    for (int i = 0; i < population; i++)
-                        arg += (i == 0 ? "" : ",") + $"B{PredY + i}-B{PredY + population}";
-                    workSheet.Cell(OffsetY + 0, OffsetX + 0).FormulaA1 = $"=SUMSQ({arg})"; // Sr
+                    
+                    workSheet.Cell(OffsetY + 0, OffsetX + 0).FormulaA1 = $"=SUMSQ(C{NormY}:C{NormY + population - 1})"; 　　　　　// Sr
                     workSheet.Cell(OffsetY + 1, OffsetX + 0).FormulaA1 = $"=SUMXMY2(B{NormY}:B{NormY + population - 1}, B{PredY}:B{PredY + population - 1})"; // Se
                     workSheet.Cell(OffsetY + 2, OffsetX + 0).FormulaA1 = $"=SUMSQ(B{NormY}:B{NormY + population - 1})"; // St
                     workSheet.Cell(OffsetY + 0, OffsetX + 1).Value = variablesNum - 1;              // p
