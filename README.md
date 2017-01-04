@@ -1,6 +1,6 @@
 # GEM
 多変量解析用Excelテンプレートを生成します.<br>
-Generate a Excel template for Multivariate analysis
+Generate an Excel template for Multivariate analysis
 
 # 環境(Environment)
 + Windows 10
@@ -22,13 +22,13 @@ Input data type is CSV format.
 
 # 使い方(Usage)
 1. データが入っているcsvファイルを実行ファイルにドラッグ&ドロップしてください。<br>
-Drag and drop a csv data file to the execution file.
+Drag and drop a CSV data file to the execution file.
 
-2. 生成されたExcelファイルを開き、逆行列の部分を選択し、`Ctrl+Enter`を押してください。<br>
-Open the generated file and select the inverse matrix, and then press `Ctrl+Enter`.
+2. 生成されたExcelファイルを開き、逆行列の部分を選択し、`Ctrl+Shift+Enter`を押してください。<br>
+Open the generated file and select the inverse matrix, and then press `Ctrl+Shift+Enter`.
  
-3. `逆行列`と`y行列`を掛け合わせた結果の行列部分を選択し、`Ctrl+Enter`を押してください。<br>
-Select the result matrix of `inverse mat` * `y mat` and press `Ctrl+Enter`. 
+3. `逆行列`と`y行列`を掛け合わせた結果の行列部分を選択し、`Ctrl+Shift+Enter`を押してください。<br>
+Select the result matrix of `inverse mat` * `y mat` and press `Ctrl+Shift+Enter`. 
 
 # インストレーション(Installation)
 [Releaseページ](https://github.com/NotFounds/GEM/releases)から実行ファイルをダウンロードするか、下記コマンドでこのリポジトリをcloneしてください。
