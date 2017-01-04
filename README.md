@@ -15,7 +15,7 @@ Generate an Excel template for Multivariate analysis
 You can easily run a multivariate regression analysis.
 
 + 面倒なExcelの式入力はすべて自動で！<br>
-All the formula input to troublesome Excel is automatic!
+All troublesome Excel formula inputs are automatic!
 
 + データ入力はCSV形式です。<br>
 Input data type is CSV format.
@@ -30,7 +30,7 @@ Open the generated file and select the inverse matrix, and then press `Ctrl+Shif
 3. `逆行列`と`y行列`を掛け合わせた結果の行列部分を選択し、`Ctrl+Shift+Enter`を押してください。<br>
 Select the result matrix of `inverse mat` * `y mat` and press `Ctrl+Shift+Enter`. 
 
-# インストレーション(Installation)
+# インストール(Installation)
 [Releaseページ](https://github.com/NotFounds/GEM/releases)から実行ファイルをダウンロードするか、下記コマンドでこのリポジトリをcloneしてください。
 
 Download the execution file from [Release page](https://github.com/NotFounds/GEM/releases).<br>
